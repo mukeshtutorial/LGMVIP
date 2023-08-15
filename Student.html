@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Student Management System Fourth</title>
+    <style>
+      body {
+        font-family:'Times New Roman', Times, serif;
+        margin: 0;
+        padding: 20px;
+        background-repeat: no-repeat;
+        background-image: url("https://i.ytimg.com/vi/MiC_NwfQp64/maxresdefault.jpg");
+        background-attachment: fixed;
+        background-size: cover;
+      }
+      h1 {
+        text-align: center;
+        color:white;
+        
+      }
+      form,
+      .table-container {
+        margin: 0 auto; 
+        max-width: 1000px;
+        background-color:rgb(236, 229, 229);
+        padding: 20px;
+      }
+      form label,
+      form input {
+        display: block;
+        margin-bottom: 10px;
+      }
+      form input[type="text"],
+      form input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid whitesmoke;
+        border-radius: 4px;
+      }
+      form button[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 8px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color:maroon;
+        color: #fff;
+      }
+      #resultTable {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      #resultTable th,
+      #resultTable td {
+        padding: 10px;
+        border: 1px solid #ccc;
+        text-align: center;
+      }
+      .edit-button {
+        background-color:maroon;
+        color: #fff;
+        padding: 5px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .edit-button:hover {
+        background-color: #8d401c;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Student Management System Fourth Semester</h1>
+    <form id="resultForm">
+      <label for="name">Student Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="Reg Number"> Reg Number:</label>
+      <input type="text" id="roll" name="roll" required />
+
+      <label for="complex">complex :</label>
+      <input
+        type="number"
+        id="complex"
+        name="complex"
+        min="0"
+        max="100"
+        required
+      />
+
+      <label for="smart">smart :</label>
+      <input
+        type="number"
+        id="smart"
+        name="smart"
+        min="0"
+        max="100"
+        required
+      />
+      <label for="dymola">dymola :</label>
+      <input
+        type="number"
+        id="dymola"
+        name="dymola"
+        min="0"
+        max="100"
+        required
+      />
+
+      <label for="wireless">wireless :</label>
+      <input
+        type="number"
+        id="wireless"
+        name="wireless"
+        min="0"
+        max="100"
+        required
+      />
+
+      <label for="java">java :</label>
+      <input
+        type="number"
+        id="java"
+        name="java"
+        min="0"
+        max="100"
+        required
+      />
+
+      <label for="dbms">dbms:</label>
+      <input
+        type="number"
+        id="dbms"
+        name="dbms"
+        min="0"
+        max="100"
+        required
+      />
+
+      <label for="vermi">vermi:</label>
+      <input
+        type="number"
+        id="vermi"
+        name="vermi"
+        min="0"
+        max="100"
+        required
+      />
+
+      <label for="android">android :</label>
+      <input
+        type="number"
+        id="android"
+        name="android"
+        min="0"
+        max="100"
+        required
+      />
+
+      <button type="submit">Add Result</button>
+    </form>
+
+    <div class="table-container">
+      <table id="resultTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Roll No</th>
+            <th>complex Marks</th>
+            <th>smart Marks</th>
+            <th>dymola Marks</th>
+            <th>wireless Marks</th>
+            <th>java Marks</th>
+            <th>dbms Marks</th>
+            <th>vermi Marks</th>
+            <th>android</th>
+            <th>Total</th>
+            <th>Percentage</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      const resultForm = document.getElementById("resultForm");
+      const resultTable = document.getElementById("resultTable");
+      const tbody = resultTable.querySelector("tbody");
+
+      resultForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const nameInput = document.getElementById("name");
+        const rollInput = document.getElementById("roll");
+        const complexInput = document.getElementById("complex");
+        const smartInput = document.getElementById("smart");
+        const dymolaInput = document.getElementById("dymola");
+        const wirelessInput = document.getElementById("wireless");
+        const javaInput = document.getElementById("java");
+        const dbmsInput = document.getElementById("dbms");
+        const vermiInput = document.getElementById("vermi");
+        const androidInput = document.getElementById("android");
+
+        const name = nameInput.value;
+        const roll = rollInput.value;
+        const complex = complexInput.value;
+        const smart = smartInput.value;
+        const dymola = dymolaInput.value;
+        const wireless = wirelessInput.value;
+        const java = javaInput.value;
+        const dbms = dbmsInput.value;
+        const vermi = vermiInput.value;
+        const android = androidInput.value;
+
+        const total =
+          parseInt(complex) + parseInt(smart) + parseInt(dymola)+parseInt(wireless)
+          +parseInt(java)+parseInt(dbms)+parseInt(vermi)+parseInt(android);
+        const percentage = ((total / 800) * 100).toFixed(2);
+
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `
+        <td>${name}</td>
+        <td>${roll}</td>
+        <td>${complex}</td>
+        <td>${smart}</td>
+        <td>${dymola}</td>
+        <td>${wireless}</td>
+        <td>${java}</td>
+        <td>${dbms}</td>
+        <td>${vermi}</td>
+        <td>${android}</td>
+        <td>${total}</td>
+        <td>${percentage}%</td>
+        <td>
+          <button class="edit-button" onclick="editResult(this)">Edit</button>
+        </td>
+      `;
+
+        tbody.appendChild(newRow);
+
+        nameInput.value = "";
+        rollInput.value = "";
+        complexInput.value = "";
+        smartInput.value = "";
+        dymolaInput.value = "";
+        wirelessInput.value = "";
+        javaInput.value = "";
+        dbmsInput.value = "";
+        android.value = "";
+        vermiInput.value = "";
+
+
+      });
+
+      function editResult(button) {
+        const row = button.parentNode.parentNode;
+        const cells = row.querySelectorAll("td");
+
+        const name = cells[0].textContent;
+        const roll = cells[1].textContent;
+        const complex = cells[2].textContent;
+        const smart= cells[3].textContent;
+        const dymola = cells[4].textContent;
+        const wireless = cells[5].textContent;
+        const java = cells[6].textContent;
+        const dbms = cells[7].textContent;
+        const vermi = cells[8].textContent;
+        const android = cells[9].textContent;
+
+        const nameInput = document.getElementById("name");
+        const rollInput = document.getElementById("roll");
+        const complexInput = document.getElementById("complex");
+        const smartInput = document.getElementById("smart");
+        const dymolaInput = document.getElementById("dymola");
+        const wirelessInput = document.getElementById("wireless");
+        const javaInput = document.getElementById("java");
+        const dbmsInput = document.getElementById("dbms");
+        const vermiInput = document.getElementById("vermi");
+        const androidInput = document.getElementById("android");
+
+        nameInput.value = name;
+        rollInput.value = roll;
+        complex.value = complex;
+        smart.value = smart;
+        dymola.value = dymola;
+        wireless.value = wireless;
+        java.value = java;
+        dbms.value = dbms;
+        vermi.value = vermi;
+        android.value = android;
+
+        row.remove();
+      }
+    </script>
+  </body>
+</html>
