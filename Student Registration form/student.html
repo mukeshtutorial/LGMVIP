@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORM</title>
+  <link rel="stylesheet" href="student.css">
+</head>
+
+<body>
+
+  <h1>REGISTRATION FORM</h1>
+  <hr>
+  <div class="box">
+    <div class="container">
+      <form action="" id="form">
+        <div class="f1">
+          <label for="name">Name*:</label>
+          <input type="text" name="name" class="in" placeholder="Enter name" required>
+        </div>
+        <div class="f2">
+          <label for="gender">Gender:</label>
+          <div class="c">
+            <div class="c1"><input type="checkbox" name="gender">
+              <label for="">Male</label>
+            </div>
+            <div class="c1"><input type="checkbox" name="gender">
+              <label for="">Female</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="f1">
+          <label for="Mobile">Mobile*:</label>
+          <input type="text" name="Mobile" class="in" placeholder="Enter mobile no" required>
+        </div>
+        <div class="f1">
+          <label for="email">Email*:</label>
+          <input type="email" name="email" class="in" placeholder="Enter email id" required>
+        </div>
+        <div class="f1">
+          <label for="image">Image:</label>
+          <input type="file" name="image" class="in" id="img" alt="student image" accept="image/*" onchange="loadFile(event)">
+        </div>
+        <div class="f2">
+          <label for="skills">Country</label>
+          <div class="c">
+            <div class="c1"><input type="checkbox" name="skills">
+              <label for="">India</label>
+            </div>
+            <div class="c1"><input type="checkbox" name="skills">
+              <label for="">USA</label>
+            </div>
+            <div class="c1"><input type="checkbox" name="skills">
+              <label for="">Other</label>
+            </div>
+          </div>
+        </div>
+
+        <input class="submit" type="submit" value="Submit">
+
+      </form>
+    </div>
+    <div class="display">
+      <h2>Registered  Students</h2>
+    </div>
+  </div>
+
+  <script src="student.js"></script>
+
+</body>
+
+</html>
